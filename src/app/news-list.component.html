@@ -1,0 +1,15 @@
+<select [(ngModel)]="selectedContinent">
+  <option value="">Selecciona un continente</option>
+  <option *ngFor="let c of continents" [value]="c">{{ c }}</option>
+</select>
+
+<select [(ngModel)]="selectedCountry" *ngIf="selectedContinent">
+  <option value="">Selecciona un país</option>
+  <option *ngFor="let p of countries[selectedContinent]" [value]="p">{{ p }}</option>
+</select>
+
+<ul>
+  <li *ngFor="let n of getFilteredNews()" (click)="viewNews(n.id)">
+    {{ n.title }} - {{ n.country }}
+  </li>
+</ul>
